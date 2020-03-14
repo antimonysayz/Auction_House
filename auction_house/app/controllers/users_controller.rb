@@ -6,7 +6,7 @@ class UsersController < ApplicationController
         else
           erb :'users/signup'
         end
-      end
+    end
       
       post'/signup' do
         @user = User.new(username: params[:username], email: params[:email], password: params[:password])
@@ -52,4 +52,4 @@ class UsersController < ApplicationController
       end
     
       
-    end
+end
