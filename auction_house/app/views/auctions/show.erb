@@ -1,1 +1,10 @@
-<h1>Auctions List</h1>
+<h2>Welcome, <%= @user.username %></h2>
+
+<h3>Auctions List</h3>
+<% @auction.each do |auction| %>
+    <ul>
+      <li><%= auction.name %> <%= auction.description %></li>
+    </ul>
+    <% end %>
+
+<p><a href="/logout"><button>Log Out</button></a></p>
