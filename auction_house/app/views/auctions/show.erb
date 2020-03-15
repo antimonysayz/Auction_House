@@ -1,10 +1,7 @@
 <h2>Welcome, <%= @user.username %></h2>
 
-<h3>Auctions List</h3>
-<% @auction.each do |auction| %>
-    <ul>
-      <li><%= auction.name %> <%= auction.description %></li>
-    </ul>
-    <% end %>
+<h3>Auction Name: <%= @auction.name %></h3>
+<p>Descrption: <%= @auction.description %><p>
+<p>Current Bid: <%= @auction.current_bid %></p>
 
 <p><a href="/logout"><button>Log Out</button></a></p>
