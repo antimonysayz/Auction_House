@@ -36,7 +36,28 @@ class AuctionsController < ApplicationController
 
     end
 
+    get '/auctions/:id/edit' do
+        if logged_in?
+            @auction = Auction.find(params[:id])
+            if current_user.id != @auction.user_id
+                redirect '/auctions'
+            else
+                erb :'/auctions/edit'
+            end
+        else
+            redirect 'login'
+        end
+    end
 
+    post '/auctions/:id' do
+        auction = Auction.find(params[:id])
+        if logged_in?
+            auction.update(:current_bid => params[:bid_amount])
+            redirect to "/auctions/#{params[:id]}"
+        else
+            redirect to "/auctions/#{params[:id]}"
+        end
+    end
     
 
 end
