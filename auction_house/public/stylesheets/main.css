@@ -5,12 +5,13 @@
     margin: 0;
     padding: 0;
   }
-
+  
   img {
     width: 200px;
     height: 400px;
     object-fit: cover;
   }
+  
   
   html, body {
     height: 100%;

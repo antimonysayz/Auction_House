@@ -1,4 +1,3 @@
-<form method="POST" action="/auctions/<%= @auction.id %>">
 
 <h2>Welcome, <%= @user.username %></h2>
 <div class="sidebar">
@@ -12,5 +11,6 @@
 <p>Image URL: <img src="<%= @auction.image_url %>"> </p>
 
 
-<p><a href='/auctions'><button>Back to Auctions</button></a></p>
+<p><a href='/bids'><button>Back to All Auctions</button></a></p>
+<p><a href='/bids'><button>Back to My Auctions</button></a></p>
 <p><a href="/logout"><button>Log Out</button></a></p>

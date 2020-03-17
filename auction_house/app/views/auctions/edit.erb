@@ -1,6 +1,6 @@
+<h2 align="center"><%= @auction.name %></h2>
 <form method="POST" action="/auctions/<%= @auction.id %>">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <label>Name:<%= @auction.name %></label>
   <br>
   <label>Edit Name: </label>
   <input type="text" name="name" id="name" value="<%= @auction.name %>"><br>
@@ -8,8 +8,8 @@
   <input type="text" name="description" id="description" value="<%= @auction.description %>"><br>
   <label>Edit Image Url: </label>
   <input type="text" name="image_url" id="image_url" value="<%= @auction.image_url %>"><br>
-  <input type="submit" value="submit">
-  <p><a href='/auctions'<button>Back to Auctions</a></p>
+  <p><input type="submit" value="Submit Changes">
+  <a href='/bids'><button>Back to My Auctions</button></a></p>
 </form>
 
 <form method="POST" action="/auctions/<%= @auction.id %>">

@@ -4,7 +4,7 @@ class AuctionsController < ApplicationController
         if logged_in? 
             @user = current_user
             @auctions = Auction.all
-            erb :'/bids/bids_index'
+            erb :'/auctions/index'
 
         else 
             flash[:login] = "You need to be logged in to perform that action"
@@ -27,7 +27,7 @@ class AuctionsController < ApplicationController
             redirect '/auctions/new'
         end
             @auction = Auction.create(:name => params[:name], :description => params[:description], :current_bid => params[:current_bid], :image_url => params[:image_url], :created_by => @user.username, :user_id => @user.id)
-            redirect '/auctions'
+            redirect '/bids'
     end
 
     get '/auctions/:id' do
