@@ -59,9 +59,10 @@ class AuctionsController < ApplicationController
 
     patch '/auctions/:id' do
         auction = Auction.find(params[:id])
-        if logged_in? && params[:bid_amount].to_i > auction.current_bid
+        user = current_user
+        if logged_in? && user.id == auction.user_id
             auction.update(:name => params[:name])
-            auction.update(:drescription => params[:description], :image_url => params[:image_url])
+            auction.update(:description => params[:description], :image_url => params[:image_url])
             redirect to "/auctions/#{params[:id]}"
         else
             redirect to "/auctions/#{params[:id]}/edit"

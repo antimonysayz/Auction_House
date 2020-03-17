@@ -15,7 +15,9 @@ class BidsController < ApplicationController
         if logged_in?
             @user = current_user
             @auction = Auction.find(params[:auction_id])
+            if !@auction.total_bids.nil?
             @winning_bid = User.find(@auction.bid_id)
+            end
 
             erb :'/bids/bid_on_auctions'
         else

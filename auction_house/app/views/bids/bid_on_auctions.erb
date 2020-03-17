@@ -7,7 +7,9 @@
 <p>Current Bid: <%= @auction.current_bid %></p>
 <p>Current Bids: <%= @auction.total_bids %>
 <p>Last Bid: <%= @auction.updated_at %> 
+<% if !@winning_bid.nil? %>
 <p>Winning Bid: <%= @winning_bid.username %>
+<% end %>
 <p>Created By: <%= @auction.created_by %>
 </div>
 <p>Image URL: <img src="<%= @auction.image_url %>"> </p>
