@@ -1,11 +1,15 @@
 <h2>Welcome, <%= @user.username %></h2>
 
-<h3>Auctions List</h3>
-<%= @bids %>
+<h3>All Auctions List</h3>
+<% @auctions.each do |auction| %>
     <ul>
-      <li><%= @bids %></a></li>
+      <li><a href="/bids/<%= auction.id %>"><%= auction.name %></a></form>
+      </li>
     </ul>
+    <% end %>
     <br>
 
-<p><a href='/auctions'<button>Back to Auctions</a></p>
+    <a href="/auctions/new">Create New</a>
+    <br>
+
 <p><a href="/logout"><button>Log Out</button></a></p>

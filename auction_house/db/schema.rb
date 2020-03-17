@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200317164918) do
+ActiveRecord::Schema.define(version: 20200317195123) do
 
   create_table "auctions", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20200317164918) do
     t.string   "image_url"
     t.integer  "user_id"
     t.string   "created_by"
+    t.integer  "bid_id"
   end
 
   create_table "bids", force: :cascade do |t|

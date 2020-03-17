@@ -1,10 +1,11 @@
 class AuctionsController < ApplicationController
 
     get '/auctions' do
-        if logged_in?
-            @auctions = Auction.all
+        if logged_in? 
             @user = current_user
-            erb :'auctions/index'
+            @auctions = Auction.all
+            erb :'/bids/bids_index'
+
         else 
             flash[:login] = "You need to be logged in to perform that action"
             redirect '/login'
@@ -36,7 +37,7 @@ class AuctionsController < ApplicationController
         @user = current_user
         @bids = Bid.find_by(:user_id => params[:user_id])
         @auction = Auction.find(params[:id])
-        @created_by = User.find(@auction.user_id)
+        #@created_by = User.find(@auction.user_id)
         erb :'/auctions/show'
 
     end
@@ -55,11 +56,11 @@ class AuctionsController < ApplicationController
         end
     end
 
-    post '/auctions/:id' do
+    patch '/auctions/:id' do
         auction = Auction.find(params[:id])
         if logged_in? && params[:bid_amount].to_i > auction.current_bid
-            auction.update(:current_bid => params[:bid_amount])
-            auction.update(:total_bids => +1)
+            auction.update(:name => params[:name])
+            auction.update(:drescription => params[:description], :image_url => params[:image_url])
             redirect to "/auctions/#{params[:id]}"
         else
             redirect to "/auctions/#{params[:id]}/edit"
