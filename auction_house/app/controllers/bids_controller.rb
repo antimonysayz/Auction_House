@@ -24,10 +24,13 @@ class BidsController < ApplicationController
 
     post '/bids/:auction_id' do
         @user = current_user
-        @auction = Auction.find(params[:auction_id])
+        auction = Auction.find(params[:auction_id])
         if logged_in?
-            @bid = Bid.create(:user_id => @user.id, :auction_id => @auction.id, :bid_amount => params[:bid_amount])
-            redirect "/bids/#{@bid.auction_id}"
+            @bid = Bid.create(:user_id => @user.id, :auction_id => auction.id, :bid_amount => params[:bid_amount])
+            if @bid.bid_amount.to_i > auction.current_bid.to_i 
+                auction.update(:current_bid => params[:bid_amount], :total_bids => + 1)
+                redirect "/bids/#{@bid.auction_id}"
+            end
         else
             redirect '/bids'
         end
