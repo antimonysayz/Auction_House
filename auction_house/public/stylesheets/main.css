@@ -6,6 +6,12 @@
     padding: 0;
   }
 
+  img {
+    width: 200px;
+    height: 400px;
+    object-fit: cover;
+  }
+  
   html, body {
     height: 100%;
     width: 100%;
@@ -112,4 +118,5 @@
     font-size: 18px;
     line-height: 24px;
   }
+  
 }
