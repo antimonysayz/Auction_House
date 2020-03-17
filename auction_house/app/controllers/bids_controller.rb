@@ -15,6 +15,8 @@ class BidsController < ApplicationController
         if logged_in?
             @user = current_user
             @auction = Auction.find(params[:auction_id])
+            @winning_bid = User.find(@auction.bid_id)
+
             erb :'/bids/bid_on_auctions'
         else
             redirect to '/bids'
@@ -28,7 +30,7 @@ class BidsController < ApplicationController
         if logged_in?
             @bid = Bid.create(:user_id => @user.id, :auction_id => auction.id, :bid_amount => params[:bid_amount])
             if @bid.bid_amount.to_i > auction.current_bid.to_i 
-                auction.update(:current_bid => params[:bid_amount], :total_bids => + 1)
+                auction.update(:current_bid => params[:bid_amount], :total_bids => + 1, :bid_id => @user.id)
                 redirect "/bids/#{@bid.auction_id}"
             end
         else

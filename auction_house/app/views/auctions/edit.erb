@@ -5,6 +5,10 @@
   <label>Edit Name: </label>
   <input type="text" name="name" id="name" value="<%= @auction.name %>"><br>
   <input type="submit" value="submit">
-  
+  <p><a href='/auctions'<button>Back to Auctions</a></p>
+</form>
 
+<form method="POST" action="/auctions/<%= @auction.id %>">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Auction">
 </form>
