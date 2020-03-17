@@ -5,7 +5,9 @@ class AuctionsController < ApplicationController
             @auctions = Auction.all
             @user = current_user
             erb :'auctions/index'
-        else redirect '/login'
+        else 
+            flash[:login] = "You need to be logged in to perform that action"
+            redirect '/login'
         end
     end
     
@@ -20,9 +22,10 @@ class AuctionsController < ApplicationController
     post '/auctions' do
         @user = current_user
         if params[:name].empty? || params[:description].empty? || params[:current_bid].empty?
+            flash[:empty] = "Missing Field Value"
             redirect '/auctions/new'
         end
-            @auction = Auction.create(:name => params[:name], :description => params[:description], :current_bid => params[:current_bid], :image_url => params[:image_url])
+            @auction = Auction.create(:name => params[:name], :description => params[:description], :current_bid => params[:current_bid], :image_url => params[:image_url], :created_by => @user.username, :user_id => @user.id)
             redirect '/auctions'
     end
 
@@ -33,6 +36,7 @@ class AuctionsController < ApplicationController
         @user = current_user
         @bids = Bid.find_by(:user_id => params[:user_id])
         @auction = Auction.find(params[:id])
+        @created_by = User.find(@auction.user_id)
         erb :'/auctions/show'
 
     end
@@ -41,6 +45,7 @@ class AuctionsController < ApplicationController
         if logged_in?
             @auction = Auction.find(params[:id])
             if current_user.id != @auction.user_id
+                flash[:wrong_user] = "You can only edit your own auctions!"
                 redirect '/auctions'
             else
                 erb :'/auctions/edit'
@@ -57,7 +62,16 @@ class AuctionsController < ApplicationController
             auction.update(:total_bids => +1)
             redirect to "/auctions/#{params[:id]}"
         else
+            redirect to "/auctions/#{params[:id]}/edit"
+        end
+    end
+
+    delete '/auctions/:id' do
+        auction = Auction.find_by(:id => params[:id])
+        if current_user.id != auction.user_id
             redirect to "/auctions/#{params[:id]}"
+        elsif auction && auction.destroy
+            redirect to '/auctions' 
         end
     end
     

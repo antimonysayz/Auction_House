@@ -10,5 +10,7 @@ class BidsController < ApplicationController
             redirect to '/auctions'
         end
     end
+
+    
     
 end

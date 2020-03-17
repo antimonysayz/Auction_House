@@ -3,7 +3,8 @@
 <h3>Auctions List</h3>
 <% @auctions.each do |auction| %>
     <ul>
-      <li><a href="/auctions/<%= auction.id %>"><%= auction.name %></a></li>
+      <li><a href="/auctions/<%= auction.id %>"><%= auction.name %></a><form action="/auctions/<%= auction.id %>/edit"><input type="submit" value="Edit"/></form>
+      </li>
     </ul>
     <% end %>
     <br>
