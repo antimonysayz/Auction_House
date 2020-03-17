@@ -10,7 +10,7 @@ class AuctionsController < ApplicationController
     end
     
     get '/auctions/new' do
-        if logged_in?
+        if logged_in?    
             erb :'auctions/new'
         else
             redirect to '/login'
@@ -19,10 +19,10 @@ class AuctionsController < ApplicationController
 
     post '/auctions' do
         @user = current_user
-        if params[:name].empty? || params[:content].empty? || params[:current_bid].empty?
+        if params[:name].empty? || params[:description].empty? || params[:current_bid].empty?
             redirect '/auctions/new'
         end
-            @auction = Auction.create(:name => params[:name], :description => params[:description], :current_bid => params[:current_bid])
+            @auction = Auction.create(:name => params[:name], :description => params[:description], :current_bid => params[:current_bid], :image_url => params[:image_url])
             redirect '/auctions'
     end
 
@@ -31,6 +31,7 @@ class AuctionsController < ApplicationController
             redirect '/login'
         end
         @user = current_user
+        @bids = Bid.find_by(:user_id => params[:user_id])
         @auction = Auction.find(params[:id])
         erb :'/auctions/show'
 
@@ -51,8 +52,9 @@ class AuctionsController < ApplicationController
 
     post '/auctions/:id' do
         auction = Auction.find(params[:id])
-        if logged_in?
+        if logged_in? && params[:bid_amount].to_i > auction.current_bid
             auction.update(:current_bid => params[:bid_amount])
+            auction.update(:total_bids => +1)
             redirect to "/auctions/#{params[:id]}"
         else
             redirect to "/auctions/#{params[:id]}"
