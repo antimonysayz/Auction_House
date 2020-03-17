@@ -43,11 +43,11 @@ class AuctionsController < ApplicationController
     end
 
     get '/auctions/:id/edit' do
+        @user = current_user
         if logged_in?
-            @user = current_user
             @auction = Auction.find_by(:user_id => @user.id)
-            if current_user.id != @auction.user_id
-                flash[:wrong_user] = "You can only edit your own auctions!"
+            if !@auction
+                flash[:wrong_user] = "You Have No Auctions!"
                 redirect '/auctions'
             else
                 erb :'/auctions/edit'
