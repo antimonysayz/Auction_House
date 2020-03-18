@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
     has_secure_password
     has_many :bids
     has_many :auctions, through: :bids 
+    validates :username, :email, uniqueness: true
+  
 
 def slug 
     @slug = slugify(self.username)

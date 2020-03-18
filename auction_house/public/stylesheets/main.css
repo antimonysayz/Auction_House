@@ -5,7 +5,13 @@
     margin: 0;
     padding: 0;
   }
-  
+
+  .home-page-bkgd {
+    background-image:url('/images/pexels-photo-3309268.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   img {
     width: 200px;
     height: 400px;
