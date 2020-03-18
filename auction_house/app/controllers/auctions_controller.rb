@@ -24,7 +24,7 @@ class AuctionsController < ApplicationController
         @user = current_user
         if params[:name].empty? || params[:description].empty? || params[:current_bid].empty?
             flash[:empty] = "Missing Field Value"
-            redirect '/auctions/new'
+            redirect '/auctions'
         end
             @auction = Auction.create(:name => params[:name], :description => params[:description], :current_bid => params[:current_bid], :image_url => params[:image_url], :created_by => @user.username, :user_id => @user.id)
             redirect '/bids'
