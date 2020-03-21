@@ -2,7 +2,7 @@
 
 Welcome to the Hotel California Auction House, where you can create and view other auctions, but they will never end! 
 
-##Features 
+#Features 
 - Users are only able to sign up with a unique e-mail address
 - Logged in Users can create and edit auctions
 - Logged in Users are able to enter bids on auctions 
