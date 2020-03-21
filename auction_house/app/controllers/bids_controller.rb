@@ -34,6 +34,10 @@ class BidsController < ApplicationController
             if @bid.bid_amount.to_i > auction.current_bid.to_i 
                 auction.update(:current_bid => params[:bid_amount], :total_bids => + 1, :bid_id => @user.id)
                 redirect "/bids/#{@bid.auction_id}"
+            else
+                flash[:invalid_bid] = "Enter a bid higher than the current bid!"
+                redirect "/bids/#{@bid.auction_id}"
+
             end
         else
             redirect '/bids'
