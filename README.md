@@ -1,6 +1,5 @@
 # Hotel California Auction House  
 
-##Overview
 Welcome to the Hotel California Auction House, where you can create and view other auctions, but they will never end! 
 
 ##Features 
