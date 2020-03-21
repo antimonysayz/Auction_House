@@ -2,9 +2,9 @@
 <div class="container">
   <header>
   </header>
-  <body class="home-page-bkgd jumbotron">
+  <body>
   <div class="col-md-8 col-md-offset-2">
-    <h2>Welcome To the Auction House</h2>
+    <h2 align="center">Welcome To the Auction House</h2>
 
     <div class="content">
       <p>Please <a href="/signup">Sign Up</a> or <a href="/login">Log In</a> to continue</p>
@@ -14,7 +14,7 @@
       <h3>Today's Status</h3>
       <ul>
         <li><b>Date:</b> <%= Time.now %></li>
-        <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
+        <li><b>Total Auctions:</b> <%= @auctions.count %></li>
         <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
         <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
       </ul>

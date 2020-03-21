@@ -8,8 +8,10 @@
   <input type="text" name="description" id="description" value="<%= @auction.description %>"><br>
   <label>Edit Image Url: </label>
   <input type="text" name="image_url" id="image_url" value="<%= @auction.image_url %>"><br>
+  <label>Edit End Date: </label>
+  <input type="date" name="end_date" id="end_date">
   <p><input type="submit" value="Submit Changes">
-  <a href='/bids'><button>Back to My Auctions</button></a></p>
+  <a href='/bids'><button class="button button2">Back to My Auctions</button></a></p>
 </form>
 
 <form method="POST" action="/auctions/<%= @auction.id %>">

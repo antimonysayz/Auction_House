@@ -13,6 +13,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    @auctions = Auction.all
     erb :welcome
   end
   

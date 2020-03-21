@@ -6,18 +6,7 @@
     padding: 0;
   }
 
-  .home-page-bkgd {
-    background-image:url('/images/pexels-photo-3309268.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  img{
-        max-width: 100%;
-        max-height: 100%;
-        overflow: hidden;
-        display: block; /* remove extra space below image */
-    }
+  
   
   html, body {
     height: 100%;
@@ -26,11 +15,43 @@
 
   /* --- Welcome Page Styles --- */
   body {
+    background-image: url("https://images.pexels.com/photos/3309268/pexels-photo-3309268.jpeg");
     background-color: lightblue;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
   }
+
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .button2 {background-color: #008CBA;} /* Blue */
+  .button3 {background-color: #f44336;} /* Red */ 
+  .button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+  .button5 {background-color: #555555;} /* Black */
+
+  .home-page-bkgd {
+    background-image: url("https://images.pexels.com/photos/3309268/pexels-photo-3309268.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  img{
+        max-width: 100%;
+        max-height: 100%;
+        overflow: hidden;
+        display: block; 
+    }
 
   .wrapper {
     background: #fff;

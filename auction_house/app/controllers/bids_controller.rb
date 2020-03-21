@@ -15,11 +15,21 @@ class BidsController < ApplicationController
         if logged_in?
             @user = current_user
             @auction = Auction.find(params[:auction_id])
-            if !@auction.total_bids.nil?
-            @winning_bid = User.find(@auction.bid_id)
+            if @auction.total_bids && @auction.end_date >= Date.today
+                if !@auction.total_bids.nil?
+                    @winning_bid = User.find(@auction.bid_id)
+                    erb :'/bids/bid_on_auctions'
+                else
+                    erb :'/bids/bid_on_auctions'
+                end
+            else
+                if !@auction.total_bids.nil?
+                    @winning_bid = User.find(@auction.bid_id)
+                    erb :'/bids/auction_end'
+                else
+                    erb :'/bids/auction_end1'
+                end
             end
-
-            erb :'/bids/bid_on_auctions'
         else
             redirect to '/bids'
         end

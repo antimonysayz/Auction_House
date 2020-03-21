@@ -1,26 +1,19 @@
 <form method="POST" action="/bids/<%= @auction.id %>">
 
 <h2 align="center">Welcome, <%= @user.username %>!</h2>
+<h2 align="center">Auction End!<h2>
 <div class="sidebar">
 <h2><%= @auction.name %></h2>
 <p>Descrption: <%= @auction.description %><p>
 <p>Current Bid: $<%= @auction.current_bid %>.00</p>
 <p>Total Bids: <%= @auction.total_bids %></p>
-<p>Start Date: <%= @auction.created_at %> 
-<p>Today's Date: <%= Date.today %> </p>
+<p>Last Bid: <%= @auction.updated_at %> 
 <p>End Date: <%= @auction.end_date %>
-<% if !@winning_bid.nil? %>
-<p>Winning Bid: <%= @winning_bid.username %>
-<% end %>
 <p>Created By: <%= @auction.created_by %>
 </div>
 <p><img src="<%= @auction.image_url %>"> </p>
-<p>Enter your Bid: <input type="number" name="bid_amount">
-<input type="submit" value="submit"></p>
 </form>
-
-
-
+<p>Winning Bid: "No Winning Bid!"
 <p>
 <a href="/logout"><button>Log Out</button></a>
 <a href='/bids'><button>Back to All Auctions</button></a>
