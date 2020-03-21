@@ -14,9 +14,10 @@ For more information on how to use the app see the video walkthrough!
 
 ## Installation 
 1. Clone this repo
-2. Run `rake db:migrate`
-3. Run `shotgun`
-4. Open your browser to `localhost:9393`
+2. Run 'bundle install'
+3. Run `rake db:migrate`
+4. Run `shotgun`
+5. Open your browser to `localhost:9393`
 
 
 
